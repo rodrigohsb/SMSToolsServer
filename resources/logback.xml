@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <!-- Console -->
+    <appender name="app-console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{dd/MM/yyyy HH:mm:ss.SSS} %5p - %c %m %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Plain Text Rolling Appender -->
+    <appender name="app-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Append>true</Append>
+        <File>/AppServer/smstools/logs/sms-tools.log</File>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%date{dd/MM/yyyy HH:mm:ss.SSS} %c %5p - %m %n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/AppServer/smstools/logs/sms-tools.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="app-error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Append>true</Append>
+        <File>/AppServer/smstools/logs/sms-tools-error.log</File>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{dd/MM/yyyy HH:mm:ss} %c %5p - %m %n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/AppServer/smstools/logs/sms-tools-error.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="org.springframework" level="INFO" />
+    <logger name="com.bemobi" level="INFO" />
+
+    <root level="INFO">
+        <appender-ref ref="app-console"/>
+        <appender-ref ref="app-info"/>
+        <appender-ref ref="app-error"/>
+        <appender-ref ref="async"/>
+    </root>
+
+</configuration>
