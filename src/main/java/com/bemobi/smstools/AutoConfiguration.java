@@ -19,6 +19,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.net.MalformedURLException;
 
@@ -29,7 +31,7 @@ import java.net.MalformedURLException;
 @ComponentScan(basePackages = "com.bemobi.smstools")
 @EnableConfigurationProperties(CouchDBConfig.class)
 @EnableAutoConfiguration(exclude = {JpaBaseConfiguration.class, HibernateJpaAutoConfiguration.class, SolrAutoConfiguration.class})
-public class AutoConfiguration
+public class AutoConfiguration extends WebMvcConfigurerAdapter
 {
 
     @Autowired

@@ -1,6 +1,5 @@
 package com.bemobi.smstools.utils;
 
-import com.bemobi.smstools.constants.Constants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,16 +14,10 @@ import java.util.Set;
  * Created by rodrigo.bacellar on 03/07/2015.
  */
 @Component
-public class HttpRequest
-{
+public class HttpRequest{
 
-
-
-
-    @Value("${cgm.endpoin}")
+    @Value("${cgm.endpoint.url}")
     private String gcmUrl;
-
-
 
     private Map<String, String> mHeaders = new HashMap<>();
     private int responseCode;

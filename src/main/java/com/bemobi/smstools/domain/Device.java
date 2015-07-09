@@ -6,15 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Created by rodrigo.bacellar on 03/07/2015.
  */
-public class Device
-{
+public class Device {
 
     @JsonProperty("id")
     private String id;
 
     @JsonProperty("_rev")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private String rev;
+    private String revision;
 
     public String getId() {
         return id;
@@ -24,20 +23,19 @@ public class Device
         this.id = id;
     }
 
-    public String getRev() {
-        return rev;
+    public String getRevision() {
+        return revision;
     }
 
-    public void setRev(String rev) {
-        this.rev = rev;
+    public void setRevision(String revision) {
+        this.revision = revision;
     }
 
     @Override
     public String toString() {
-        return "GCMDevice{" +
+        return "Device{" +
                 "id='" + id + '\'' +
-                ", rev='" + rev + '\'' +
+                ", revision='" + revision + '\'' +
                 '}';
     }
-
 }

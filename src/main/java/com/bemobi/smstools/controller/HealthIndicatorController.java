@@ -12,6 +12,6 @@ public class HealthIndicatorController extends AbstractHealthIndicator
     @Override
     protected void doHealthCheck(Health.Builder builder) throws Exception
     {
-        builder.withDetail("Mensagem","De pé esperando uma posição sua...").up();
+        builder.up();
     }
 }

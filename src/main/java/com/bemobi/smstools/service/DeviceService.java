@@ -15,9 +15,9 @@ public class DeviceService
     @Autowired
     private DeviceRepository deviceRepository;
 
-    public void create(Device device)
+    public void create(String regId)
     {
-        deviceRepository.create(device);
+        deviceRepository.create(regId);
     }
 
     public DeviceRepository get(String regId)

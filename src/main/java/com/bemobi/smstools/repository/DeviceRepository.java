@@ -23,10 +23,21 @@ public class DeviceRepository
     private CouchDbConnector couchDbConnector;
 
 
-    public void create(Device device)
+    public void create(String regId)
     {
-        couchDbConnector.create(device);
-        LOGGER.info("GCMDevice [{}] armazenado com sucesso.", device.getId());
+
+        Device device = new Device();
+        device.setId(regId);
+        try
+        {
+            couchDbConnector.create(device);
+            LOGGER.info("GCMDevice [{}] armazenado com sucesso.", device.getId());
+        }
+        catch (UpdateConflictException e)
+        {
+            LOGGER.warn("GCMDevice [{}] já armazenado anteriormente.", device.getId());
+        }
+
     }
 
     public void update(Device device)
